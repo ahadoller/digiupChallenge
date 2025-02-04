@@ -1,23 +1,25 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
 import Header from './layout/header';
 import HomePage from './pages/home';
+import PageProduit from './components/PageProduit';
+
 
 function App() {
+  
   return (
     <BrowserRouter>
-      <div className=" text-white">
+      <div>
         <Header />
-        <main className="mx-auto w-full ">
+        <main>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="*" element={<HomePage />} />
+            <Route path="/produit/:id" element={<PageProduit />} />
           </Routes>
-          <Toaster position="bottom-right" />
         </main>
       </div>
     </BrowserRouter>
   );
 }
+
 
 export default App;
