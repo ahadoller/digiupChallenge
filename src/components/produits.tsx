@@ -1,9 +1,9 @@
-// Produits.tsx
+
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import ProduitItem from './ProduitItem';
 
-// Type de données pour un produit
+
 interface Produit {
   id: number;
   title: string;
@@ -17,7 +17,7 @@ interface Produit {
   };
 }
 
-// Props attendues par le composant Produits
+
 interface ProduitsProps {
   nbProduits: number;
   minPrice: number;
@@ -25,17 +25,17 @@ interface ProduitsProps {
 }
 
 const Produits = ({ nbProduits, minPrice, maxPrice }: ProduitsProps) => {
-  // Stocke l'ensemble des produits récupérés depuis l'API
+  
   const [allProduits, setAllProduits] = useState<Produit[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [tri, setTri] = useState<string>(''); // Pour le tri : 'asc' ou 'desc'
 
-  // Récupère les produits depuis l'API
+  
   const fetchProduits = async () => {
     try {
       setLoading(true);
-      // Ici, on récupère TOUS les produits (ou vous pouvez adapter le limit)
+     
       const response = await axios.get('https://fakestoreapi.com/products');
       setAllProduits(response.data);
     } catch (err) {
@@ -49,19 +49,19 @@ const Produits = ({ nbProduits, minPrice, maxPrice }: ProduitsProps) => {
     fetchProduits();
   }, []);
 
-  // Applique le filtrage en fonction des prix passés en props
+ 
   let produitsFiltres = allProduits.filter(
     (produit) => produit.price >= minPrice && produit.price <= maxPrice
   );
 
-  // Applique le tri si sélectionné
+
   if (tri === 'asc') {
     produitsFiltres = produitsFiltres.sort((a, b) => a.price - b.price);
   } else if (tri === 'desc') {
     produitsFiltres = produitsFiltres.sort((a, b) => b.price - a.price);
   }
 
-  // Limite le nombre de produits affichés selon nbProduits
+ 
   const produitsAffiches = produitsFiltres.slice(0, nbProduits);
 
   return (

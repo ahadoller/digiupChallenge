@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// L'interface de base pour un produit
+
 interface Produit {
   id: number;
   title: string;
@@ -15,7 +15,7 @@ interface Produit {
   };
 }
 
-// Les props que "ProduitItem" recevra
+
 interface ProduitItemProps {
   produit: Produit;
 }

@@ -1,10 +1,10 @@
-// HomePage.tsx
+
 import FormulaireRecherche from '../../components/formulaire-recherche';
 import Produits from '../../components/produits';
 import { useState } from 'react';
 
 const HomePage = () => {
-  // Stocke les paramètres de recherche
+  
   const [searchParams, setSearchParams] = useState({
     nbProduits: 10,
     min: 0,

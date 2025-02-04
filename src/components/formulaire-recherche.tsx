@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
-import BoutonPrix from './BoutonPrix'; // <-- Import du composant
+import BoutonPrix from './BoutonPrix';
 
 interface FormulaireRechercheProps {
-  // Vous pouvez également passer une fonction onSearch(nbProduits, min, max) 
-  // pour renvoyer les valeurs validées au composant parent (App ou autre).
+ 
   onSearch?: (nbProduits: number, min: number, max: number) => void;
 }
 
@@ -16,7 +15,7 @@ const FormulaireRecherche = ({ onSearch }: FormulaireRechercheProps) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // === Vérifications de base ===
+
     if (isNaN(totalProduits) || isNaN(prixMinimum) || isNaN(prixMaximum)) {
       toast.error("Veuillez saisir des valeurs numériques valides.");
       return;
@@ -37,7 +36,7 @@ const FormulaireRecherche = ({ onSearch }: FormulaireRechercheProps) => {
       return;
     }
 
-    // === Si tout est OK, on peut appeler onSearch() du parent ===
+    
     if (onSearch) {
       onSearch(totalProduits, prixMinimum, prixMaximum);
     } else {
@@ -45,7 +44,7 @@ const FormulaireRecherche = ({ onSearch }: FormulaireRechercheProps) => {
     }
   };
 
-  // Fonctions pour incrémenter / décrémenter le prix minimum et le prix maximum
+ 
   const decrementMin = () => setPrixMinimum(prixMinimum - 10);
   const incrementMin = () => setPrixMinimum(prixMinimum + 10);
   const decrementMax = () => setPrixMaximum(prixMaximum - 10);

@@ -32,7 +32,7 @@ const PageProduit: React.FC = () => {
       }
     };
 
-    // Lance la requête seulement si "id" existe (pour éviter les erreurs).
+   
     if (id) {
       fetchProduit();
     }
